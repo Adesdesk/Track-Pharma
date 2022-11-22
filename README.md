@@ -1,2 +1,5 @@
 # Track-Pharma
 Track-Pharma is an ongoing blockchain-based supply-chain management project by a collaborative effort of members of Team201.
+It is a decentralized application that will give all parties involved in the pharmaceutical supply chain an easy way to create, store, and retrieve verifiable, cryptographically signed certificates that make it clear whether or not, that pharmaceutical supplies are genuine and in compliance with standards.
+
+Track-Pharma will be especially relevant in developing nations where importers of pharmaceutical supplies frequently circumvent national standards-setting laws. This solution will ensure that the manufacturer and location of production of certain pharmaceutical products can be clearly traced, and linked to the quality of each supply. Improved public access to high-quality pharmaceuticals and related products, which will result in a more effective healthcare system, will be one effect of this solution. The increased transparency it fosters will deter and perhaps even terminate the illicit production, importation, and distribution of pharmaceutical goods in under-developed, as well as developing countries.
