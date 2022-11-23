@@ -1,0 +1,27 @@
+{
+  "name": "track-pharma",
+  "version": "1.0.0",
+  "description": "Track-Pharma is an ongoing blockchain-based supply-chain management project by a collaborative effort of members of Team201.\r It is a decentralized application that will give all parties involved in the pharmaceutical supply chain an easy way to create, store, and retrieve verifiable, cryptographically signed certificates that make it clear whether or not, that pharmaceutical supplies are genuine and in compliance with standards.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adesdesk/Track-Pharma.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adesdesk/Track-Pharma/issues"
+  },
+  "homepage": "https://github.com/Adesdesk/Track-Pharma#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.12.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0"
+  }
+}

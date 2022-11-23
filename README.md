@@ -1,5 +1,13 @@
-# Track-Pharma
-Track-Pharma is an ongoing blockchain-based supply-chain management project by a collaborative effort of members of Team201.
-It is a decentralized application that will give all parties involved in the pharmaceutical supply chain an easy way to create, store, and retrieve verifiable, cryptographically signed certificates that make it clear whether or not, that pharmaceutical supplies are genuine and in compliance with standards.
+# Sample Hardhat Project
 
-Track-Pharma will be especially relevant in developing nations where importers of pharmaceutical supplies frequently circumvent national standards-setting laws. This solution will ensure that the manufacturer and location of production of certain pharmaceutical products can be clearly traced, and linked to the quality of each supply. Improved public access to high-quality pharmaceuticals and related products, which will result in a more effective healthcare system, will be one effect of this solution. The increased transparency it fosters will deter and perhaps even terminate the illicit production, importation, and distribution of pharmaceutical goods in under-developed, as well as developing countries.
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat help
+npx hardhat test
+REPORT_GAS=true npx hardhat test
+npx hardhat node
+npx hardhat run scripts/deploy.js
+```
