@@ -1,26 +1,63 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
+const { ethers } = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  // Calling the contracts
+const Accounts = await ethers.getContractFactory("Accounts");
+const Items = await ethers.getContractFactory("Items");
+const TrackPharma = await ethers.getContractFactory("TrackPharma");
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
 
-  await lock.deployed();
+// Deploy the contract
+const accounts = await Accounts.deploy()
+const items = await Items.deploy()
+const pharma = await TrackPharma.deploy("Team201", "Team201@gmail.com")
 
-  console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+
+// await types.deployed()
+await accounts.deployed()
+await items.deployed()
+await pharma.deployed()
+
+// print the contract address
+console.log("Accounts deployed to: ", accounts.address);
+console.log("Items deployed to: ", items.address);
+console.log("TrackPharma deployed to: ", pharma.address);
+
+
+  console.log("Sleeping.....");
+  // Wait for etherscan to notice that the contract has been deployed
+  await sleep(10000);
+
+  // Verify the Accounts contract after deploying
+  await hre.run("verify:verify", {
+    contract: "contracts/Accounts.sol:Accounts",
+    address: accounts.address,
+    constructorArguments: [],
+  });
+
+  console.log("Verified Accounts ")
+
+  // Verify the Items contract after deploying
+  await hre.run("verify:verify", {
+    contract: "contracts/Items.sol:Items",
+    address: items.address,
+    constructorArguments: [],
+  });
+  console.log("Verified Items ")
+
+  // Verify the TrackPharma contract after deploying
+  await hre.run("verify:verify", {
+    contract: "contracts/TrackPharma.sol:TrackPharma",
+    address: pharma.address,
+    constructorArguments: ["Team201", "Team201@gmail.com"],
+  });
+
+  console.log("Verified TrackPharma ")
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
