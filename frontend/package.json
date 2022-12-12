@@ -1,0 +1,40 @@
+{
+  "name": "team201",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@mantine/carousel": "^5.7.1",
+    "@mantine/core": "^5.7.1",
+    "@mantine/dates": "^5.7.1",
+    "@mantine/dropzone": "^5.7.1",
+    "@mantine/form": "^5.7.1",
+    "@mantine/hooks": "^5.7.1",
+    "@mantine/modals": "^5.7.1",
+    "@mantine/next": "^5.7.1",
+    "@mantine/notifications": "^5.7.1",
+    "@mantine/nprogress": "^5.7.1",
+    "@mantine/prism": "^5.7.1",
+    "@mantine/rte": "^5.7.1",
+    "@mantine/spotlight": "^5.7.1",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "dayjs": "^1.11.6",
+    "embla-carousel-react": "^7.0.5",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.2",
+    "next": "13.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.5",
+    "typescript": "4.8.4"
+  }
+}
