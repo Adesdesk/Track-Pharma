@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, Flex, Button, Grid, Box, Modal, Divider } from '@mantine/core';
+import { Card, Image, Text, Group, Flex, Button, Grid, Box, Modal, Divider, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 
 interface Product {
@@ -16,6 +16,8 @@ type ProductCardProps = {
 }
 
 const ProductCard = (props: ProductCardProps) => {
+
+    const theme = useMantineTheme();
 
     const [opened, setOpened] = useState(false);
 
@@ -53,9 +55,9 @@ const ProductCard = (props: ProductCardProps) => {
                         justify={{ sm: 'center' }}
                     >
 
-                        <Button mb={'md'} size={'xs'} variant="filled" gradient={{ from: 'teal', to: 'yellow', deg: 105 }} color="blue">View Details</Button>
+                        <Button mb={'md'} size={'xs'} variant="filled" color={theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[7]}>View Details</Button>
 
-                        <Button onClick={() => setOpened(true)} size={'xs'} variant="filled" gradient={{ from: 'teal', to: 'yellow', deg: 105 }} color="blue">Sell</Button>
+                        <Button onClick={() => setOpened(true)} size={'xs'} variant="filled" color="theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[0]">Sell</Button>
                     </Flex>
                 </Group>
             </Card>

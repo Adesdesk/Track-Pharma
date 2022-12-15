@@ -1,14 +1,15 @@
-import { ActionIcon, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons';
 
 function LightAndDarkModeButton() {
+  const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
 
   return (
     <ActionIcon
       variant="outline"
-      color={dark ? 'yellow' : 'blue'}
+      color={dark ? theme.colors.brand[0] : theme.colors.brand[9]}
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >

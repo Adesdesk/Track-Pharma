@@ -1,4 +1,4 @@
-import { createStyles, Card, Text, UnstyledButton, Anchor, Group, Grid } from '@mantine/core';
+import { createStyles, Card, Text, UnstyledButton, Anchor, Group, Grid, Paper } from '@mantine/core';
 import {
   IconCreditCard,
   IconBuildingBank,
@@ -10,6 +10,7 @@ import {
   IconCashBanknote,
   IconCoin,
 } from '@tabler/icons';
+import DefaultLayout from '../../components/Layouts/Default';
 import AddUser from '../../components/Users/AddUser';
 import ExistingUser from '../../components/Users/ExistingUser';
 
@@ -54,7 +55,8 @@ const UsersPage = () => {
   ));
 
   return (
-    <>
+    <DefaultLayout>
+      <Paper>
         <Group p={'md'}>
             <Grid>
               <Grid.Col md={6}>
@@ -65,8 +67,8 @@ const UsersPage = () => {
               </Grid.Col>
             </Grid>
         </Group>
-        
-    </>
+      </Paper>
+    </DefaultLayout>
   );
 }
 

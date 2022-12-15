@@ -14,7 +14,7 @@ import {
   IconMoonStars,
   IconSun,
 } from '@tabler/icons';
-import LightAndDarkModeButton from './LightAndDarkModeButton';
+import LightAndDarkModeButton from '../LightAndDarkModeButton';
 
 const useStyles = createStyles((theme) => ({
   link: {

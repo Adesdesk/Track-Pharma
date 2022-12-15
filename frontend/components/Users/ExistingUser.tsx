@@ -5,7 +5,6 @@ import { users } from "../../data/data"
 
 
 const ExistingUser = () => {
-    console.log(users)
 
     const theme = useMantineTheme();
 
@@ -36,7 +35,7 @@ const ExistingUser = () => {
                         }).map((user, index) => (
                             <Group style={{ width: '100%' }} key={index} mb={'sm'}>
                                 <Card shadow="sm" p="xs" radius="md" withBorder w={'100%'}>
-                                    <Title size="h5" color={'blue.5'}>{user.name}</Title>
+                                    <Title size="h5" color={theme.colorScheme === 'dark' ? theme.colors.brand[5] : theme.colors.dark[7]}>{user.name}</Title>
                                     <Group w={'100%'}>
                                         <IconMail />
                                         <Text size={'sm'} style={{ display: 'inline-flex' }}>{user.email}</Text>

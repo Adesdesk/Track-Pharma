@@ -1,14 +1,14 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { MantineProvider, ColorSchemeProvider, ColorScheme   } from "@mantine/core"
-import {ApplicationContainer} from "../components/ApplicationContainer"
+import {ApplicationContainer} from "../components/Layouts/ApplicationContainer"
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 
 export default function App({ Component, pageProps }: AppProps) {
   
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     getInitialValueInEffect: true,
   });
 
@@ -22,6 +22,18 @@ export default function App({ Component, pageProps }: AppProps) {
       <MantineProvider
         theme={{
           colorScheme: colorScheme,
+          colors: {
+            light: ['#FFF'],
+            misc:['#FFF'],
+            // brand: ['#e1f3ff', '#b3d9ff', '#83c0fc', '#55a7fb', '#2e8efa', '#1e75e1', '#145baf', '#0a417e', '', '#00274d'],
+            brand: ['#defefd', '#b7f8f5', '#8df1ed', '#64ece6', '#3fe5de', '#2bccc5', '#1c9f99', '#0e726d', '#004442', '#001917'],
+          },
+          primaryColor: 'brand',
+          defaultGradient: {
+            from: '#DF7207',
+            to: '#FA9939',
+            deg: 135,
+          },
           components: {
             Container: {
               defaultProps: {
@@ -39,9 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
         withGlobalStyles 
         withNormalizeCSS
       >
-      <ApplicationContainer>
         <Component {...pageProps} />
-      </ApplicationContainer>
       </MantineProvider>     
     </ColorSchemeProvider>
     )
