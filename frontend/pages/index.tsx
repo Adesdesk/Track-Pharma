@@ -1,4 +1,5 @@
-import { createStyles, Container, Title, Text, Button } from '@mantine/core';
+import { createStyles, Container, Title, Text, Button, Image } from '@mantine/core';
+import { useRouter } from 'next/router';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -6,9 +7,10 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundImage:
-      'linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)',
-    paddingTop: theme.spacing.xl * 3,
+      'linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #000000 70%), url(/bg.png)',
+    paddingTop: theme.spacing.xl * 2,
     paddingBottom: theme.spacing.xl * 3,
+    minHeight: '100vh',
   },
 
   inner: {
@@ -27,12 +29,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   content: {
-    paddingTop: theme.spacing.xl * 2,
+    paddingTop: theme.spacing.xl * 6,
     paddingBottom: theme.spacing.xl * 2,
     marginRight: theme.spacing.xl * 3,
 
     [theme.fn.smallerThan('md')]: {
       marginRight: 0,
+      paddingTop: theme.spacing.xl * 6,
     },
   },
 
@@ -68,42 +71,58 @@ const useStyles = createStyles((theme) => ({
     fontSize: 22,
 
     [theme.fn.smallerThan('md')]: {
-      width: '100%',
+      width: '50%',
     },
   },
 }));
 
 const HeroImageRight = () => {
   const { classes } = useStyles();
+  const router = useRouter();
   return (
     <div className={classes.root}>
+      <Container size="lg"> 
+        <Image
+            src="/logo1-1.png"
+            alt="Logo"
+            width={250}
+          />
+      </Container>
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              A{' '}
+              Transparency in{' '}
               <Text
                 component="span"
                 inherit
                 variant="gradient"
-                gradient={{ from: 'pink', to: 'yellow' }}
+                gradient={{ from: '#14BFB8', to: 'gold' }}
               >
-                fully featured
+                healthcare
+              </Text>
+               , powered by
+              <Text
+                component="span"
+                inherit
+                variant="gradient"
+                gradient={{ from: '#14BFB8', to: 'gold' }}
+              >
+                 blockchain
               </Text>{' '}
-              React components library
             </Title>
 
             <Text className={classes.description} mt={30}>
-              Build fully functional accessible web applications with ease – Mantine includes more
-              than 100 customizable components and hooks to cover you in any situation
+              Empowering healthcare through decentralization: the future of pharmaceutical supply chain management is here!
             </Text>
 
             <Button
               variant="gradient"
-              gradient={{ from: 'pink', to: 'yellow' }}
+              gradient={{ from: '#14BFB8', to: 'gold' }}
               size="xl"
               className={classes.control}
               mt={40}
+              onClick={() => {router.push('users');}}
             >
               Get started
             </Button>

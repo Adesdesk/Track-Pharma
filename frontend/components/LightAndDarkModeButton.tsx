@@ -9,7 +9,7 @@ function LightAndDarkModeButton() {
   return (
     <ActionIcon
       variant="outline"
-      color={dark ? theme.colors.brand[0] : theme.colors.brand[9]}
+      color={dark ? theme.colors.brand[0] : theme.colors.brand[2]}
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >

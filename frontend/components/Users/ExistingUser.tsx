@@ -12,8 +12,8 @@ const ExistingUser = () => {
 
     return (
             <>
-                <Group mx="auto" direction="column" p={"xl"} align={'center'} style={{
-                    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+                <Group mx="auto" p={"xl"} align={'center'} style={{
+                    // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
                     width: "100%"
                 }} >
                     <Title order={3}>Existing User</Title>

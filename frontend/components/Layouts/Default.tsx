@@ -31,7 +31,10 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
             padding="md"
             header={<HeaderResponsive links={links} />}
             styles={(theme) => ({
-            main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+            main: { 
+              backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1] ,
+              paddingTop: 50
+            },
             })}
         >
             <Container size={'xl'}>

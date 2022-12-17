@@ -1,8 +1,9 @@
-
-import {Group, TextInput, Textarea, Radio, Select, FileInput, useMantineTheme, Title, Text, ActionIcon, Paper, Button } from '@mantine/core';
+// tslint:disable
+import {Group, TextInput, Textarea, Radio, Select, FileInput, useMantineTheme, Title, Text, ActionIcon, Paper, Button, Header } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { IconPlus, IconUpload, IconTrash } from '@tabler/icons';
 import { useState } from 'react';
+import { useApiCall } from '../../hooks/hooks';
 
 const addSideEffect = () => {
     console.log('hi')
@@ -14,20 +15,21 @@ type sideEffect = {
 
 const AddProduct = () => {
   
+    const { addMyProduct } = useApiCall();
     const theme = useMantineTheme()
     const [prodcutType, setProdcutType] = useState();
-    const [manufacturerName, setManufacturerName] = useState('Team201 LLC');
-    const [manufacturerEmail, setManufacturerEmail] = useState('team201@grandida.com');
-    const [manufacturingDate, setManufacturingDate] = useState();
-    const [expiryDate, setExpiryDate] = useState();
-    const [productName, setProductName] = useState();
-    const [scientificName, setScientificName] = useState();
+    const [manufacturerName, setManufacturerName] = useState<any>('Team201 LLC');
+    const [manufacturerEmail, setManufacturerEmail] = useState<any>('team201@grandida.com');
+    const [manufacturingDate, setManufacturingDate] = useState<any>();
+    const [expiryDate, setExpiryDate] = useState<any>();
+    const [productName, setProductName] = useState<any>();
+    const [scientificName, setScientificName] = useState<any>();
 
-    const [sideEffect, addSideEffect] = useState('');
-    const [sideEffectsList, addSideEffectsList] = useState([]);
+    const [sideEffect, addSideEffect] = useState<any>('');
+    const [sideEffectsList, addSideEffectsList] = useState<any>([]);
 
-    const [composition, addComposition] = useState('');
-    const [compositionList, addCompositionList] = useState([]);
+    const [composition, addComposition] = useState<any>('');
+    const [compositionList, addCompositionList] = useState<any>([]);
 
 
     async function handleAddSideEffect() {
@@ -38,7 +40,7 @@ const AddProduct = () => {
         addSideEffect('')
     }
 
-    function handleDeleteSideEffect(index) {
+    function handleDeleteSideEffect(index: number) {
         let sideEffectsTemp = [...sideEffectsList]
         sideEffectsTemp.splice(index, 1)
         addSideEffectsList(sideEffectsTemp)
@@ -52,15 +54,20 @@ const AddProduct = () => {
         addComposition('')
     }
 
-    function handleDeleteComposition(index) {
+    function handleDeleteComposition(index: number) {
         let compositionsTemp = [...compositionList]
         compositionsTemp.splice(index, 1)
         addCompositionList(compositionsTemp)
     }
 
     return ( 
-            <Group mx="auto" direction="column" p={"md"} style={{ width: "100%", height:"100%", borderRadius: "10px"}} >
-                <Group mx="auto" direction="column" p={"xl"} style={{ 
+            <>
+            <Group mx="auto" w={700} >
+                <Title order={2}>Add a product</Title>
+            </Group>
+
+            <Group mx="auto" p={"md"} style={{ width: "100%", height:"100%", borderRadius: "10px"}} >
+                <Group mx="auto" p={"xl"} style={{ 
                     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0], 
                     width: "700px"
                 }} >
@@ -79,9 +86,9 @@ const AddProduct = () => {
 
                     <Radio.Group
                         value={prodcutType}
-                        onChange={setProdcutType}
+                        onChange={() => {setProdcutType}}
                         name="favoriteFramework"
-                        label="Choose Prodcut Type" radius="sm" size='sm'
+                        label="Choose Prodcut Type" size='sm'
                     >
                         <Radio value="individual" label="Individual" />
                         <Radio value="batch" label="Batch" />
@@ -118,12 +125,12 @@ const AddProduct = () => {
                     </Group>
 
                     {
-                        sideEffectsList.map((sideEffect, index) => {
+                        sideEffectsList.map((sideEffect: string, index: number) => {
                             return (
                                 <>
                                     <Group position='apart' key={index} style={{ width: "100%" }}>
                                         <Text>{sideEffect}</Text>
-                                        <IconTrash onClick={(index) => handleDeleteSideEffect(index)} color={'red'} size={20} />
+                                        <IconTrash onClick={() => handleDeleteSideEffect(index)} color={'red'} size={20} />
                                     </Group>
                                 </>
                             )
@@ -140,12 +147,12 @@ const AddProduct = () => {
                     </Group>
 
                     {
-                        compositionList.map((composition, index) => {
+                        compositionList.map((composition: string, index: number) => {
                             return (
                                 <>
                                     <Group key={index} position='apart' style={{ width: "100%" }}>
                                         <Text>{composition}</Text>
-                                        <IconTrash onClick={(index) => handleDeleteComposition(index)} color={'red'} size={20} />
+                                        <IconTrash onClick={() => handleDeleteComposition(index)} color={'red'} size={20} />
                                     </Group>
                                 </>
                             )
@@ -159,10 +166,11 @@ const AddProduct = () => {
                         style={{ width: "100%" }}
                     />
 
-                    <Button variant="gradient" gradient={{ from: 'teal', to: 'yellow', deg: 105 }}>Add Product</Button>
+                    <Button variant="gradient">Add Product</Button>
                     
                 </Group>
             </Group>
+            </>
      );
 }
  

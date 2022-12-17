@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react';
 import { ethers, providers } from 'ethers'
-import { createStyles, Header, Container, Group, Burger, Paper, Transition, ActionIcon, Button, Text, MediaQuery, useMantineTheme, Image } from '@mantine/core';
+import { createStyles, Header, Container, Group, Burger, Paper, Transition, ActionIcon, Button, Text, MediaQuery, useMantineTheme, Image, Anchor } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import LightAndDarkModeButton from '../LightAndDarkModeButton';
 import { IconWallet } from '@tabler/icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 
 const API_KEY = 'SFH9QsvWk9aagTGGHdHjmsmzAiCWy0m1'
 const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.g.alchemy.com/v2/${API_KEY}`);
 
 const HEADER_HEIGHT = 100;
 
+// declare var window: any
+
 const useStyles = createStyles((theme) => ({
   root: {
     position: 'relative',
     zIndex: 1,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.brand[8],
   },
 
   dropdown: {
@@ -58,12 +63,12 @@ const useStyles = createStyles((theme) => ({
     padding: '8px 12px',
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[8],
     },
 
     [theme.fn.smallerThan('sm')]: {
@@ -74,7 +79,7 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     '&, &:hover': {
-      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor[5] }).background,
       color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
     },
   },
@@ -87,17 +92,18 @@ interface HeaderResponsiveProps {
 export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   const theme = useMantineTheme();
+  const router = useRouter();
 
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
-  const [currentAccount, setCurrentAccount] = useState("")
-  const [connect, setConnect] = useState(false)
-  const [balance, setBalance] = useState("")
+  const [currentAccount, setCurrentAccount] = useState<any>("")
+  const [connect, setConnect] = useState<boolean>(false)
+  const [balance, setBalance] = useState<string>("")
 
   const items = links.map((link) => (
-    <Link
+    <a
       key={link.label}
       href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
@@ -106,18 +112,19 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         event.preventDefault();
         setActive(link.link);
         close();
+        router.push(link.link);
       }}
     >
       {link.label}
-    </Link>
+    </a>
   ));
 
   const handleAccountsChanged = async (accounts: []) => {
-    console.log(accounts[0])
-    setCurrentAccount(accounts[0])
+    const firstAccount = [...accounts].shift() ;
+    setCurrentAccount(firstAccount)
 
     const address = '0x3F3353875a9E06c23532BaA3FB574d75912a60C4'
-    console.log(address, currentAccount)
+
     const balance = await provider.getBalance(address)
     const readableBalance = ethers.utils.formatEther(balance)
     setBalance(readableBalance)
@@ -188,25 +195,24 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       })
     }
     accountChanged();
+    window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
   }, [])
 
   return (
-    <Header height={HEADER_HEIGHT} className={classes.root} style={{ 
-      background: 'transparent'
-     }}>
+    <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header} size={'xl'}>
 
         {
           theme.colorScheme === 'dark' ? (
             <Image
-              src="/logo3.png"
+              src="/logo1.png"
               alt="Logo"
               width={180}
               height={180}
             />
           ) : (
             <Image
-              src="/logo4.png"
+              src="/logo1.png"
               alt="Logo"
               width={180}
               height={180}
@@ -221,9 +227,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             <Group>
               <LightAndDarkModeButton />
               {!currentAccount && !connect ? (
-                <Button color="red" size={'xs'} variant="outline" onClick={()=>{connectWallet()}}><IconWallet size={16} /> Connect Wallet</Button>
+                <Button color="red" size={'xs'} variant="light" onClick={()=>{connectWallet()}}><IconWallet size={16} /> Connect Wallet</Button>
               ) : (
-                <Button color={theme.colorScheme === 'dark' ? theme.colors.brand[5] : theme.colors.dark[7]} size={'xs'} variant="outline"><IconWallet size={16} /> Connected</Button>
+                <Button color={theme.colorScheme === 'dark' ? theme.colors.brand[5] : theme.colors.dark[7]} size={'xs'} variant="light"><IconWallet size={16} /> Connected</Button>
               )}
             </Group>
           </MediaQuery>
@@ -237,9 +243,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
               <ActionIcon color="red" variant="outline" onClick={()=>{connectWallet()}}><IconWallet size={16} /></ActionIcon>
             ) : (
               
-              <ActionIcon color={'lime'} variant="outline"><IconWallet size={16} /></ActionIcon>
+              <ActionIcon color={theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.dark[0]} variant="outline"><IconWallet size={16} /></ActionIcon>
             )}
-            <Burger opened={opened} onClick={toggle} className={classes.burger} size="lg" />
+            <Burger opened={opened} onClick={toggle} className={classes.burger} size="lg" color={theme.colorScheme === 'dark' ? theme.colors.brand[2] : theme.colors.dark[0]} />
           </Group>
         </MediaQuery>
 

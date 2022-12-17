@@ -12,8 +12,8 @@ const AddUser = () => {
     return (
         <>
 
-            <Group mx="auto" direction="column" p={"xl"} style={{
-                    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+            <Group mx="auto" p={"xl"} style={{
+                    // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
                     width: "100%"
                 }} >
 

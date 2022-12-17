@@ -1,10 +1,15 @@
-import { Grid, Pagination, Space, Flex, Title } from '@mantine/core';
+import { Grid, Pagination, Space, Flex, Title, Paper } from '@mantine/core';
+import DefaultLayout from '../../components/Layouts/Default';
 import AddProduct from "../../components/Products/AddProduct";
 
 const AddProductPage = () => {
     return (        
         <div>
-            <AddProduct></AddProduct>
+            <DefaultLayout>
+                <Paper p={'xl'}>
+                    <AddProduct />
+                </Paper>
+            </DefaultLayout>
         </div>
     );
 }

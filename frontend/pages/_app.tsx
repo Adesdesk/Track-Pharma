@@ -29,9 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
             brand: ['#defefd', '#b7f8f5', '#8df1ed', '#64ece6', '#3fe5de', '#2bccc5', '#1c9f99', '#0e726d', '#004442', '#001917'],
           },
           primaryColor: 'brand',
+          primaryShade: 7,
           defaultGradient: {
-            from: '#DF7207',
-            to: '#FA9939',
+            from: '#14BFB8',
+            to: 'gold',
             deg: 135,
           },
           components: {

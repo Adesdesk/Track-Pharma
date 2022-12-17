@@ -3,8 +3,8 @@ import { Button, Flex, Group, Image } from "@mantine/core"
 const ProductDetail = () => {
     return (
         <div>
-            <Group mx="auto" direction="column" p={"md"} style={{ width: "100%", height:"100%", borderRadius: "10px"}} >
-                <Group mx="auto" direction="column" p={"xl"} style={{ backgroundColor: "#FFF", width: "700px"}} >
+            <Group mx="auto" p={"md"} style={{ width: "100%", height:"100%", borderRadius: "10px"}} >
+                <Group mx="auto" p={"xl"} style={{ backgroundColor: "#FFF", width: "700px"}} >
                     <Group position="apart">
                         <div style={{ width: 240, marginLeft: 'auto', marginRight: 'auto' }}>
                         <Image

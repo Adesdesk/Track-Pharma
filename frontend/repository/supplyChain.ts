@@ -1,10 +1,10 @@
 import { getCurrentEpoch } from "../utils/util";
-import { CONTRACT_ADDRESS } from "./config";
 import { Product, UserDetails } from "./interfaces";
 import { Contract, ethers } from "ethers";
 
-const ContractABI = require("./SupplyChain.json");
+const ContractABI = require("../repository/SupplyChain.json");
 const productList = require("./data-1.json");
+const CONTRACT_ADDRESS = '0xa794211cFBE6534D75cb08f0E4dee1161008d767'
 
 declare let window: any;
 
@@ -13,6 +13,7 @@ export class SupplyChainService {
   private static instance: SupplyChainService;
   private _supplyChainContract!: Contract;
   private _accountAdress: string | undefined;
+  private _signer: any;
 
   public static getInstance(): SupplyChainService {
     if (!SupplyChainService.instance) {
@@ -23,31 +24,24 @@ export class SupplyChainService {
 
   checkedWallet = async () => {
     try {
-      const { ethereum } = window;
 
-      if (!ethereum) {
-        alert("Get MetaMask!");
-        return false;
-      }
-
-      await ethereum.enable();
-
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
-      await ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: `0x${Number(4).toString(16)}` }],
-      });
-
-      this._accountAdress = accounts[0];
-      this._supplyChainContract = this.getContract();
-
+      if(!window.ethereum) return alert('Install Metamask');
+      
+      // const API_KEY = 'SFH9QsvWk9aagTGGHdHjmsmzAiCWy0m1'
+      // const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.g.alchemy.com/v2/${API_KEY}`);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+          
+      this._signer = provider.getSigner();
+  
+      this._accountAdress = await this._signer.getAddress();
+  
+      this._supplyChainContract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI["abi"], this._signer);
+      console.log(this._supplyChainContract)
+      
       return true;
+
     } catch (error) {
-      console.log(error);
-      return false;
+      console.log(error)
     }
   };
 
@@ -93,7 +87,7 @@ export class SupplyChainService {
   async getAllProducts(): Promise<Product[]> {
     try {
       await this.ethEnabled();
-      const _list = await this._supplyChainContract.getAllProducts();
+      const _list = await this._supplyChainContract.getAllItems();
       const productList: Product[] = _list;
       return productList;
     } catch (error) {

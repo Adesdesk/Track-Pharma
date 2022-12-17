@@ -1,15 +1,6 @@
 import { Card, Image, Text, Group, Flex, Button, Grid, Box, Modal, Divider, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
-
-interface Product {
-    manufacturerName: string,
-    manufacturerEmail: string,
-    manufacturingDate: string,
-    expiryDate: string,
-    productName: string,
-    scientificName: string,
-    image: string,
-}
+import { Product } from '../../repository/interfaces';
 
 type ProductCardProps = {
     product: Product
@@ -32,11 +23,10 @@ const ProductCard = (props: ProductCardProps) => {
                 <Group position="center" grow sx={{ height: '100%' }}>
                     <Flex>
                         <Image
-                            src={ props.product.image }
+                            src="/medicine.jpg"
                             height={"100%"}
                             alt="No way!"
                             fit={'cover'}
-                            direction={{ base: 'row' }}
                         />
                     </Flex>
 
@@ -44,10 +34,10 @@ const ProductCard = (props: ProductCardProps) => {
                         direction={{ base: 'column' }}
                         justify={{ sm: 'flex-start' }}
                     >
-                        <Text fw={600} fz="sm">{ props.product.productName }</Text>
+                        <Text fw={600} fz="sm">{ props.product.name }</Text>
                         <Text fz="xs">21</Text>
-                        <Text fz="xs">MFG { props.product.manufacturingDate }</Text>
-                        <Text fz="xs">Expires in { props.product.expiryDate } day(s)</Text>
+                        <Text fz="xs">MFG Placebo</Text>
+                        <Text fz="xs">Expires in 895 day(s)</Text>
                     </Flex>
 
                     <Flex
@@ -74,7 +64,6 @@ const ProductCard = (props: ProductCardProps) => {
                                 height={"100%"}
                                 alt="No way!"
                                 fit='contain'
-                                direction={{ base: 'row' }}
                             />
                         </Flex>
 

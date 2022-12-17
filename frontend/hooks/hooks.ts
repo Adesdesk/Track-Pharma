@@ -1,20 +1,14 @@
+import { ethers } from "ethers";
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Product, UserDetails } from "../repository/interfaces";
 import { SupplyChainService } from "../repository/supplyChain";
-import {
-  setAllProducts,
-  setUserDetails,
-  setNewProduct,
-  getUsersList,
-  setMyProducts,
-} from "../store/actions";
-import { toastError, toastSuccess } from "../utils/toastMessages";
+const ContractABI = require("../repository/SupplyChain.json");
 
 export const useApiCall = () => {
 
+  const CONTRACT_ADDRESS = '0xa794211cFBE6534D75cb08f0E4dee1161008d767'
+
   const apiInstance = SupplyChainService.getInstance();
-  const dispatch = useDispatch();
   
   const [productData, setProductData] = useState<Product>();
   const [loading, setLoading] = useState(false);
@@ -23,14 +17,50 @@ export const useApiCall = () => {
   const [productDetailsLoading, setProductDetailsLoading] = useState(false);
   const [userListLoading, setUserListLoading] = useState(false);
 
+  const [provider, setProvider] = useState<any>(undefined)
+  const [signer, setSigner] = useState<any>(undefined)
+  const [contract, setContract] = useState<any>(undefined)
+  const [signerAddress, setSignerAddress] = useState<string>("")
+
+  const getSigner = async () => {
+    provider.send("eth_requestAccounts", [])
+    const signer = provider.getSigner()
+    return signer
+  }
+
+  const loadContract = useCallback(async () => {
+    try {
+      
+      // const API_KEY = 'SFH9QsvWk9aagTGGHdHjmsmzAiCWy0m1'
+      // const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.g.alchemy.com/v2/${API_KEY}`);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      setProvider(provider)
+          
+      const signer = provider.getSigner();
+      setSigner(signer)
+  
+      const signerAddress = await signer.getAddress();
+      setSignerAddress(signerAddress)
+  
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI["abi"], signer);
+      setContract(contract)
+      
+      console.log(provider, signer, signerAddress, contract)
+
+      return true;
+
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+
   const getUserList = useCallback(async () => {
     try {
       setUserListLoading(true);
       const users = await apiInstance.getMyUsersList();
-      dispatch(getUsersList(users));
     } catch (error) {
       console.log(error);
-      toastError("Failed to get user");
+      console.log("Failed to get user");
     } finally {
       setUserListLoading(false);
     }
@@ -40,24 +70,24 @@ export const useApiCall = () => {
     try {
       setMyProductListLoading(true);
       const listData = await apiInstance.getMyProducts();
-      dispatch(setMyProducts(listData));
     } catch (error) {
       console.log(error);
-      toastError("Failed to get my products");
+      console.log("Failed to get my products");
     } finally {
       setMyProductListLoading(false);
     }
   }, []);
 
-  const getProducts = useCallback(async () => {
+  const getAllItems = useCallback(async () => {
     try {
       setProductListLoading(true);
       const listData: Product[] = await apiInstance.getAllProducts();
 
-      dispatch(setAllProducts(listData));
+      console.log(listData)
+
     } catch (error) {
       console.log(error);
-      toastError("Could not retrive product list");
+      console.log("Could not retrive product list");
     } finally {
       setProductListLoading(false);
     }
@@ -72,7 +102,7 @@ export const useApiCall = () => {
       setProductData(productData);
     } catch (error) {
       console.log(error);
-      toastError("Failed to retrive Product details");
+      console.log("Failed to retrive Product details");
     } finally {
       setProductDetailsLoading(false);
     }
@@ -81,18 +111,17 @@ export const useApiCall = () => {
   const getUserDetails = useCallback(async () => {
     try {
       const userDetails: UserDetails = await apiInstance.getMyDetails();
-      dispatch(setUserDetails(userDetails));
     } catch (error) {
-      toastError("Couldnt retrive user details");
+      console.log("Couldnt retrive user details");
     }
-  }, [dispatch]);
+  }, []);
 
-  const getIndividualDetails = useCallback(async (id) => {
+  const getIndividualDetails = useCallback(async (id: number) => {
     try {
-      const userDetails: UserDetails = await apiInstance.getUserDetail(id);
+      const userDetails: UserDetails = await apiInstance.getUserDetail(id.toString());
       return userDetails;
     } catch (error) {
-      toastError("Couldnt retrive user details");
+      console.log("Couldnt retrive user details");
     }
   }, []);
 
@@ -104,10 +133,10 @@ export const useApiCall = () => {
           productId
         );
         if (sellerDetails) {
-          toastSuccess("Product successfully sold");
+          console.log("Product successfully sold");
         }
       } catch (error) {
-        toastError("Something went wrong");
+        console.log("Something went wrong");
       }
     },
     []
@@ -117,12 +146,11 @@ export const useApiCall = () => {
     try {
       const productAdded = await apiInstance.addProduct(product);
       if (productAdded) {
-        dispatch(setNewProduct(product));
-        toastSuccess("Transaction to add new product has been initiated.");
+        console.log("Transaction to add new product has been initiated.");
         return true;
       }
     } catch (error) {
-      toastError("Failed to add product");
+      console.log("Failed to add product");
     }
   }, []);
 
@@ -131,9 +159,9 @@ export const useApiCall = () => {
       setLoading(true);
       const userAdded = await apiInstance.addParty(user);
       console.log(userAdded);
-      toastSuccess("user added successfully");
+      console.log("user added successfully");
     } catch (error) {
-      toastError("Failed to add user");
+      console.log("Failed to add user");
       console.log(error);
     } finally {
       setLoading(false);
@@ -141,7 +169,7 @@ export const useApiCall = () => {
   }, []);
 
   return {
-    getProducts,
+    getAllItems,
     getProductDetails,
     productData,
     setProductData,
@@ -157,5 +185,11 @@ export const useApiCall = () => {
     productListLoading,
     myProductListLoading,
     productDetailsLoading,
+
+    loadContract,
+    provider,
+    signer,
+    contract,
+    signerAddress,
   };
 };
