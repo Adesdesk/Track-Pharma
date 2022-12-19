@@ -132,7 +132,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   async function connectWallet() {
 
-    if(!window.ethereum) return alert("Install Metamask");
+    if(!window.ethereum) return console.log("Install Metamask");
 
     try {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -151,7 +151,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   async function checkIfWalletIsConnected() {
 
-    if(!window.ethereum) return alert("Install Metamask");
+    if(!window.ethereum) return console.log("Install Metamask");
 
     try {
       const accounts = await window.ethereum.request({ method: 'eth_accounts' });
@@ -176,7 +176,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   useEffect(() => {
     async function accountChanged() {
 
-      if(!window.ethereum) return alert("Install Metamask");
+      if(!window.ethereum) return console.log("Install Metamask");
 
       window.ethereum.on("accountsChanged", async () => {
         try {
@@ -195,7 +195,6 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       })
     }
     accountChanged();
-    window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
   }, [])
 
   return (

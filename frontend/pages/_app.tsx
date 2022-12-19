@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { MantineProvider, ColorSchemeProvider, ColorScheme   } from "@mantine/core"
-import {ApplicationContainer} from "../components/Layouts/ApplicationContainer"
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
+import { Provider } from 'react-redux';
 
 export default function App({ Component, pageProps }: AppProps) {
   

@@ -21,7 +21,7 @@ export interface Product {
 
 export interface UserDetails {
   role: UserRole;
-  id_: string; // metamask address
+  address: string; // metamask address
   name: string;
   email: string;
   // user_type: string; //types

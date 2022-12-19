@@ -99,7 +99,7 @@ const HeroImageRight = () => {
                 variant="gradient"
                 gradient={{ from: '#14BFB8', to: 'gold' }}
               >
-                healthcare
+                Healthcare
               </Text>
                , powered by
               <Text
@@ -108,7 +108,7 @@ const HeroImageRight = () => {
                 variant="gradient"
                 gradient={{ from: '#14BFB8', to: 'gold' }}
               >
-                 blockchain
+                 Blockchain
               </Text>{' '}
             </Title>
 

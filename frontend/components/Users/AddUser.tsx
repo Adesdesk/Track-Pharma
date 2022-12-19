@@ -1,5 +1,8 @@
 import { Button, Group, TextInput, Title, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import { useApiCall } from "../../hooks/hooks";
+import { useSelector } from "react-redux";
+// import { RootState } from "../../store/reducers";
 
 const AddUser = () => {
 
@@ -8,6 +11,49 @@ const AddUser = () => {
     const [name, setName] = useState('Team201');
     const [email, setEmail] = useState('team201@grandida.com');
     const [address, setAddress] = useState('1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
+    // const [newUserDetails, setNewUserDetails] = useState({
+    //   name: "",
+    //   email: "",
+    //   address: "",
+    // });
+    // const [error, setError] = useState({ name: false, email: false, address: false });
+    // const { loading, addUsers } = useApiCall();
+    // const { userDetails } = useSelector(
+    //   (state: RootState) => state.generalReducer
+    // );
+    
+    // function validate() {
+    //   if (!newUserDetails.email.includes("@")) {
+    //     setError((curr) => ({ ...curr, email: true }));
+    //     return false;
+    //   } else if (newUserDetails.name.length < 3) {
+    //     setError((curr) => ({ ...curr, name: true }));
+    //     return false;
+    //   } else if (userDetails.role !== 3 && newUserDetails.address.length < 42) {
+    //     setError((curr) => ({ ...curr, address: true }));
+    //     return false;
+    //   }
+    //   setError({ name: false, email: false, address: false });
+    //   return true;
+    // }
+
+    // async function handleAddUser() {
+    //   try {
+    //     if (validate()) {
+    //       await addUsers({
+    //         ...newUserDetails,
+    //         role: userDetails.role + 1,
+    //       });
+    //       setNewUserDetails({
+    //         name: "",
+    //         email: "",
+    //         address: "",
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // }
 
     return (
         <>
