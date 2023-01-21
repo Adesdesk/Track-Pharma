@@ -112,13 +112,18 @@ contract Items {
         itemNotExists(_item.barcodeId)
     {
         require(_item.manufacturer == msg.sender, "Only manufacturer can add");
+        
         items.push(_item);
+
         item[_item.barcodeId] = _item;
+
         itemHistory[_item.barcodeId].manufacturer = Types.AccountTransactions({
             transactionAddress: msg.sender,
             timestamp: currentTime_
         });
+
         accountLinkedItems[msg.sender].push(_item.barcodeId);
+
         emit NewItem(
             _item.name,
             _item.manufacturerName,

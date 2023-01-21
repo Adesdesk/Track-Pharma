@@ -34,7 +34,7 @@ contract TrackPharma is Accounts, Items {
 // get account items 
 function getMyItems() public view returns (Types.Item[] memory) {
         return getAccountItems();
-    }
+}
 
 
 // Get single item from the list
@@ -54,44 +54,44 @@ function addNewItem(Types.Item memory _item, uint256 currentTime_)
     }
 
 // sell item i.e transfer ownership to another user 
- function sellItem(
-        address partyId,
-        string memory barcodeId,
-        uint256 currentTime_
-    ) public {
-        require(isPartyExists(partyId), "Party not found");
-        Types.AccountDetails memory party_ = accounts[partyId];
-        sell(partyId, barcodeId, party_, currentTime_);
-    }
+function sellItem(
+    address partyId,
+    string memory barcodeId,
+    uint256 currentTime_
+) public {
+    require(isPartyExists(partyId), "Party not found");
+    Types.AccountDetails memory party_ = accounts[partyId];
+    sell(partyId, barcodeId, party_, currentTime_);
+}
 
 
-    // add user to my account which can be used in the future
-     function addParty(Types.AccountDetails memory account_) public {
-        addparty(account_, msg.sender);
-    }
+// add user to my account which can be used in the future
+function addParty(Types.AccountDetails memory account_) public {
+    addparty(account_, msg.sender);
+}
 
-    // get details of the user
-     function getAccountDetails(address Id)
-        public
-        view
-        returns (Types.AccountDetails memory)
-    {
-        return getPartyDetails(Id);
-    }
+// get details of the user
+    function getAccountDetails(address Id)
+    public
+    view
+    returns (Types.AccountDetails memory)
+{
+    return getPartyDetails(Id);
+}
 
 // get details of currently signed in account  
- function getMyDetails() public view returns (Types.AccountDetails memory) {
-        return getPartyDetails(msg.sender);
-    }
+function getMyDetails() public view returns (Types.AccountDetails memory) {
+    return getPartyDetails(msg.sender);
+}
 
-    // get list of all account added by currently operating account
-    function getMyAccountsList()
-        public
-        view
-        returns (Types.AccountDetails[] memory accountsList_)
-    {
-        return getMyPartyList(msg.sender);
-    }
+// get list of all account added by currently operating account
+function getMyAccountsList()
+    public
+    view
+    returns (Types.AccountDetails[] memory accountsList_)
+{
+    return getMyPartyList(msg.sender);
+}
 
 
 
