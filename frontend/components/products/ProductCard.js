@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import logo from '../../public/logo4.png'
 
@@ -16,7 +17,7 @@ function ProductCard({item, openModal}) {
                 <p className='text-xs font-thin'>Expiry Date: {item.expiringDate} days</p>
             </div>
             <div className='flex flex-col justify-center items-end w-1/2 space-y-2'>
-                <button className='text-white text-xs font-semibold py-1 px-4 w-8/12 text-center bg-pharmaGreen-600 rounded-md hover:bg-pharmaGreen-700 transition ease-linear duration-200'>Details</button>
+                <Link href={`products/${item.barcodeId}`} className='text-white text-xs font-semibold py-1 px-4 w-8/12 text-center bg-pharmaGreen-600 rounded-md hover:bg-pharmaGreen-700 transition ease-linear duration-200'>Details</Link>
                 
                 <button onClick={()=>openModal(item)} className="text-white text-xs font-semibold py-1 px-4 w-8/12 text-center bg-pharmaGreen-600 rounded-md hover:bg-pharmaGreen-700 transition ease-linear duration-200 cursor-pointer">Sell</button>
             </div>

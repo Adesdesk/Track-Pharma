@@ -47,13 +47,8 @@ function AddProduct() {
                 item = {...item, 'manufacturer': address, 'others': [...sideEffectsList, ...compositionList]};
                 
                 // prep arguments
-                const currentTimestamp = Math.round(Date.now() / 1000); 
-                
-                // estimate gas price
-                // const estimatedGas = await contractInstance.estimateGas.addNewItem(item, currentTimestamp);
-                // console.log("🚀 ~ file: new.js:54 ~ saveItem ~ estimatedGas", estimatedGas)
-                // const paddedEstimate = increaseGasLimit(estimatedGas);
-                // console.log("🚀 ~ file: new.js:56 ~ saveItem ~ paddedEstimate", paddedEstimate)
+                const currentTimestamp = Date.now();
+                console.log("🚀 ~ file: new.js:51 ~ saveItem ~ currentTimestamp", currentTimestamp)
 
                 // save product
                 const addedItem = await contractInstance.addNewItem(item, currentTimestamp);

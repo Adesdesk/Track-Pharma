@@ -8,24 +8,6 @@ import { PHARMA_ABI, PHARMA_ADDRESS } from '@/constants';
 import { Contract } from 'ethers';
 import { useForm } from "react-hook-form";
 
-// const users = [{
-//     "name": "Gnni Cecere",
-//     "email": "gcecere0@elpais.com",
-//     "address": "0xdd2ca9e37829571d09653913925732b4b538e69b"
-//   }, {
-//     "name": "Joyann Gooding",
-//     "email": "jgooding1@woothemes.com",
-//     "address": "0xeda51ea8e07476cc25a05ad985ba79eaa3c9219d"
-//   }, {
-//     "name": "Hayes Collingdon",
-//     "email": "hcollingdon2@answers.com",
-//     "address": "0x65657b4a63c5a924220d4acefdaf9e710ef42f59"
-//   }, {
-//     "name": "Virge MacKellen",
-//     "email": "vmackellen3@ask.com",
-//     "address": "0x212cd2debc083ac6de2672ab2bb3008c17f85661"
-//   }]
-
 function UserCard ({user}) {
     
     return (
@@ -48,7 +30,7 @@ function AddProduct() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const { data: signer } = useSigner()
-    const { connector: activeConnector, isConnected } = useAccount()
+    const { isConnected } = useAccount()
 
     const [search, setSearch] = useState('');
     const [usersList, setUsersList] = useState('');

@@ -22,6 +22,7 @@
     "react-hook-form": "^7.42.1",
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
+    "sharp": "^0.31.3",
     "wagmi": "^0.9.6"
   },
   "devDependencies": {

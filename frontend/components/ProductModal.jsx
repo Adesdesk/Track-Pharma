@@ -5,10 +5,11 @@ import Image from 'next/image';
 
 function ProductModal({ isVisible, onClose, modalItem, shouldCloseOnOverlayClick, sellItem }) {
 
-  if (!isVisible) return;
-
+  
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { item, myAccountList } = modalItem;
+  
+  if (!isVisible) return;
 
   return (
     
