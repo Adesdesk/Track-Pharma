@@ -11,17 +11,22 @@ Supply chains around the globe are confronted with significant interruption, and
 The Solution
 With more effective and trustless management of the supply chain of these products, pharmaceutical products manufacturers, distributors and retailers can eliminate the dark spots, while delivering trust-worthy products more timely and honorably. Though there have been existing technology-based systems by which the pharmaceutical industry has attempted to manage its products’ supply chain over the years, there have been limitations of inadequate transparency especially for large supply chains which often involve complex transactions.
 
-Track-Pharma implementation as a supply-chain management system for pharmaceutical products
-The following were the requirements:
+Track-Pharma uses an user-friendly interface in its implementation as a supply-chain management system for pharmaceutical products
+
+![Track-Pharma ui1](https://user-images.githubusercontent.com/101281102/213939450-aa7604f7-4814-4c47-a787-2a4d486bbfc0.JPG)
+
+![Track-Pharma ui2](https://user-images.githubusercontent.com/101281102/213939411-7548213e-c8d4-4c16-84e6-38fc49c4ccf1.JPG)
+
+The following are its spacifications:
 
 Various user-roles i.e., the Manufacturers, Distributors, and Retailers of pharmaceutical products.
-The rules and protocols behind the Track-Pharma smart contract. 
-A Blockchain Network – Polygon, for the Contract deployment. Particularly, Polygon Mumbai test network is used for this contract.
+The rules and protocols that make the Track-Pharma smart contract as developed using Hardhat  
+A blockchain network – Polygon Mumbai, for the Contract deployment. Particularly, Polygon Mumbai test network is used for this contract.
 A web-based user interface, using Next.js, Tailwind CSS, where users can access information. This is done with a number of assumptions as follows:
 
 i.	Items can only be listed into the database by a manufacturer who deploys the contract.
 ii.	A distributor can be added to the database by the manufacturer from whom they buy products.
-iii.	A distributor can in turn add retailers to the database and sell them products.
+iii. A distributor can in turn add retailers to the database and sell them products.
 iv.	Retailers can add customers to the database and sell them products.
 v.	Every account handling various role except the end users (customers) must do this with an associated Metamask address.
 vi.	All accounts have access to details of an item’s history along the supply chain as this is publicly accessible.
