@@ -13,8 +13,6 @@ With more effective and trustless management of the supply chain of these produc
 
 Track-Pharma uses an user-friendly interface in its implementation as a supply-chain management system for pharmaceutical products
 
-![Track-Pharma ui1](https://user-images.githubusercontent.com/101281102/213939450-aa7604f7-4814-4c47-a787-2a4d486bbfc0.JPG)
-
 ![Track-Pharma ui2](https://user-images.githubusercontent.com/101281102/213939411-7548213e-c8d4-4c16-84e6-38fc49c4ccf1.JPG)
 
 The following are its spacifications:
