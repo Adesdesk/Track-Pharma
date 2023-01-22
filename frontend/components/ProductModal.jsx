@@ -3,14 +3,23 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import Image from 'next/image';
 
+
 function ProductModal({ isVisible, onClose, modalItem, shouldCloseOnOverlayClick, sellItem }) {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { item, myAccountList } = modalItem;
+
+  if (!isVisible) return;
+
+  return (
+
+/*function ProductModal({ isVisible, onClose, modalItem, shouldCloseOnOverlayClick, sellItem }) {
 
   if (!isVisible) return;
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { item, myAccountList } = modalItem;
 
-  return (
+  return (*/
     
     <div onClick={()=>(shouldCloseOnOverlayClick?onClose():null)} className="fixed inset-0 bg-black/50 bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
       <div className='w-3/4 lg:w-4/12'>
@@ -24,7 +33,7 @@ function ProductModal({ isVisible, onClose, modalItem, shouldCloseOnOverlayClick
             <div className='p-2'>
                 <div className='mb-4'>
                   <div>
-                    <img src={item.itemImage} alt={item.name} width={50} height={50} />
+                    <Image src={item.itemImage} alt={item.name} width={50} height={50} />
                     <p className='mt-1 text-sm text-gray-600'>{item.name}</p>
                     <p className='mt-1 text-sm text-gray-600'>{item.barcodeId}</p>
                     <p className='mt-1 text-sm text-gray-600'>{item.manufacturedDate}</p>

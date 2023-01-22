@@ -16,11 +16,13 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
     "ethers": "^5.7.2",
+    "has": "^1.0.3",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.1",
     "react-icons": "^4.7.1",
+    "react-is": "^18.2.0",
     "react-modal": "^3.16.1",
     "wagmi": "^0.9.6"
   },

@@ -272,7 +272,12 @@ function ProductIndex() {
     if(!signer) return;
     getAllItems();
     getMyAccountsList();
-  },[signer])
+  },[signer, getAllItems, getMyAccountsList])
+  /*useEffect(() => {
+    if(!signer) return;
+    getAllItems();
+    getMyAccountsList();
+  },[signer])*/
 
 
   // Modal Logic  

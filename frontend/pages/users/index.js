@@ -108,9 +108,13 @@ function AddProduct() {
     }
 
     useEffect(() => {
+        if(!signer) return;
+        getMyAccountsList()
+        }, [signer, isConnected, getMyAccountsList])
+    /*useEffect(() => {
       if(!signer) return;
       getMyAccountsList()
-    }, [signer, isConnected])
+    }, [signer, isConnected])*/
     
 
 
