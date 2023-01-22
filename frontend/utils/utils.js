@@ -14,7 +14,8 @@ export const increaseGasLimit = (estimatedGasLimit) => {
 }
 
 export function epochToHumanReadable(epoch) {
-    const date = new Date(epoch);
+    let x = Number(epoch)
+    const date = new Date(x);
     return date.toDateString();
 }
 
