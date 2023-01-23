@@ -24,6 +24,7 @@
     "react-icons": "^4.7.1",
     "react-is": "^18.2.0",
     "react-modal": "^3.16.1",
+    "sharp": "^0.31.3",
     "wagmi": "^0.9.6"
   },
   "devDependencies": {

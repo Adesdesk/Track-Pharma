@@ -4,6 +4,7 @@ import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { polygon, polygonMumbai, hardhat } from "wagmi/chains";
 import Nav from '../components/Nav'
 import ContextWrapper from '../context/ContextWrapper';
+import styles from '@/styles/Home.module.css'
 
 // const alchemyId = process.env.ALCHEMY_ID;
 const alchemyId = 'SFH9QsvWk9aagTGGHdHjmsmzAiCWy0m1';
@@ -24,10 +25,12 @@ export default function App({ Component, pageProps }) {
     <WagmiConfig client={client}>
       <ConnectKitProvider>
         <ContextWrapper>
-          <div className='h-full w-full bg-gray-100'>
-            <Nav />
-            <div className='p-4 md:w-10/12 md:mx-auto'>
-                <Component {...pageProps} />
+          <div className={styles.landingpage}>
+            <div className='h-full w-full bg-gray-100'>
+              <Nav />
+              <div className=''>
+                  <Component {...pageProps} />
+              </div>
             </div>
           </div>
         </ContextWrapper>

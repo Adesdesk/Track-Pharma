@@ -17,7 +17,9 @@ function Nav() {
                 </div>
                 <div className='hidden md:flex'>
                     <ul className='text-white flex space-x-4'>
-                        <li className='font-normal p-1 cursor-pointer transition ease-linear duration-150 text-orange-400'>Home</li>
+                        <li className='font-normal p-1 cursor-pointer transition ease-linear duration-150 text-orange-400'>
+                            <Link href='/'>Home</Link>
+                        </li>
                         <li className='font-normal p-1 cursor-pointer'>
                             <Link href='/products'>Products</Link>
                         </li>

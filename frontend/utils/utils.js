@@ -14,9 +14,15 @@ export const increaseGasLimit = (estimatedGasLimit) => {
 }
 
 export function epochToHumanReadable(epoch) {
-    var date = new Date(epoch * 1000);
-    return date.toLocaleString();
+    let x = Number(epoch)
+    const date = new Date(x);
+    return date.toDateString();
 }
+
+export  function firstAndLastFour(string) {
+    return string.slice(0, 4) + '......' + string.slice(-4);
+}
+
 
 // =============================================
 
@@ -25,15 +31,15 @@ export const formatItem = (item) => {
         name: item.name,
         manufacturerName: item.manufacturerName,
         manufacturer: item.manufacturer,
-        manufacturedDate: epochToHumanReadable(item.manufacturedDate.toString()),
-        expiringDate: epochToHumanReadable(item.expiringDate.toString()),
+        manufacturedDate: epochToHumanReadable(item.manufacturedDate?.toString()),
+        expiringDate: epochToHumanReadable(item.expiringDate?.toString()),
         isInBatch: item.isInBatch,
-        batchCount: item.batchCount.toString(),
+        batchCount: item.batchCount?.toString(),
         barcodeId: item.barcodeId,
         itemImage: item.itemImage,
         itemType: item.itemType,
         usage: item.usage,
     }
-  }
+}
 
   
