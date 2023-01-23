@@ -117,9 +117,9 @@ export default function Home() {
               with&nbsp;Vercel.
             </p>
           </a>
+          <Footer />
         </div>
       </main>
-      <Footer />
     </>
   )
 }
