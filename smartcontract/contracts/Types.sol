@@ -44,7 +44,7 @@ library Types {
 
     // this contains the transcation details of the user
     struct AccountTransactions {
-        address transactionAddress; // account Address of the user
+        address accountId; // account Address of the user
         uint timestamp; // time of purchase
     }
 
