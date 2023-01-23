@@ -4,6 +4,7 @@ import { Contract } from 'ethers'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useAccount, useSigner } from 'wagmi'
+import Footer from '../../components/Footer'
 import ProductCard from '../../components/products/ProductCard'
 import { formatItem } from '../../utils/utils'
 
@@ -295,7 +296,7 @@ function ProductIndex() {
   }
 
   return (
-    
+    <>    
     <div className='bg-white w-full h-full shadow-md rounded-md p-2 md:p-10'>
       <div className='flex justify-between items-center w-full'>
         <p className='text-2xl font-bold mb-8'>Products</p>
@@ -314,6 +315,8 @@ function ProductIndex() {
         showModal &&  <ProductModal isVisible={showModal} onClose={closeModal} modalItem={modalItem} shouldCloseOnOverlayClick={false} sellItem={sellItem} />
       }
     </div>
+    <Footer />
+    </>
   )
 }
 

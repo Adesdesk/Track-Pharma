@@ -4,6 +4,7 @@ import { RiWallet2Line } from "react-icons/ri";
 import { BsSearch } from "react-icons/bs";
 import AppContext from '../../context/AppContext';
 import { useAccount, useContract, useSigner } from 'wagmi';
+import Footer from '../../components/Footer'
 import { PHARMA_ABI, PHARMA_ADDRESS } from '@/constants';
 import { Contract } from 'ethers';
 import { useForm } from "react-hook-form";
@@ -119,6 +120,7 @@ function AddProduct() {
 
 
     return (
+        <>
         <div className='flex flex-col-reverse gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
             
             <div className='w-full md:w-1/2 mb-12'>
@@ -178,6 +180,8 @@ function AddProduct() {
                 </form>
             </div>
         </div>
+        <Footer />
+    </>
     )
 }
 
