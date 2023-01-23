@@ -14,7 +14,7 @@ function Nav() {
             <div className='flex justify-between items-center p-4 md:w-10/12 md:mx-auto'>
                 <div>
                     <Image className='w-40 cursor-pointer' src={logo} alt="logo" />
-                    <h6 className='font-normal p-1 cursor-pointer'>By Team201</h6>
+                    {/*<h6 className='font-normal p-1 cursor-pointer'>By Team201</h6>*/}
                 </div>
                 <div className='hidden md:flex'>
                     <ul className='text-white flex space-x-4'>
