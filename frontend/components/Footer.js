@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className='makeFooter'>
-      <footer className='w-full h-20 bg-pharmaGreen-800'>
+    <div className='w-full h-24 bg-pharmaGreen-800'>
+      <footer className=''>
         <p className='footNote'>
           <span>Track-Pharma</span>
           <br></br>
