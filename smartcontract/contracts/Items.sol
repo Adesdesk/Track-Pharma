@@ -118,7 +118,7 @@ contract Items {
         item[_item.barcodeId] = _item;
 
         itemHistory[_item.barcodeId].manufacturer = Types.AccountTransactions({
-            transactionAddress: msg.sender,
+            accountId: msg.sender,
             timestamp: currentTime_
         });
 
@@ -145,7 +145,7 @@ contract Items {
         // Update to history of an item
         Types.AccountTransactions memory AccountTransactions_ = Types
             .AccountTransactions({
-                transactionAddress: _party.accountId,
+                accountId: _party.accountId,
                 timestamp: currentTime_
             });
         if (Types.AccountRole(_party.role) == Types.AccountRole.Distributor) {
