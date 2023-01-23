@@ -11,17 +11,12 @@ const TrackPharma = await ethers.getContractFactory("TrackPharma");
 // // Deploy the contract
 // const accounts = await Accounts.deploy()
 // const items = await Items.deploy()
-const pharma = await TrackPharma.deploy("Team201", "Team201@gmail.com")
+const pharma = await TrackPharma.deploy("Team201", "Team201projects@gmail.com")
 
 
-// // await types.deployed()
-// await accounts.deployed()
-// await items.deployed()
 await pharma.deployed()
 
 // print the contract address
-// console.log("Accounts deployed to: ", accounts.address);
-// console.log("Items deployed to: ", items.address);
 console.log("TrackPharma deployed to: ", pharma.address);
 
 
@@ -34,7 +29,7 @@ console.log("TrackPharma deployed to: ", pharma.address);
   await hre.run("verify:verify", {
     contract: "contracts/TrackPharma.sol:TrackPharma",
     address: pharma.address,
-    constructorArguments: ["Team201", "Team201@gmail.com"],
+    constructorArguments: ["Team201", "Team201projects@gmail.com"],
   });
 
   console.log("Verified TrackPharma ")
