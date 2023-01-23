@@ -97,63 +97,65 @@ function AddProduct() {
 
 
     return (
-        <div className='flex flex-col-reverse gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
-            
-            <div className='w-full md:w-1/2 mb-12'>
-                <p className='text-xl md:text-2xl font-bold mb-10'>Existing Users</p>
+        <div className='p-4 md:w-10/12 md:mx-auto'>
+            <div className='flex flex-col-reverse gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
+                
+                <div className='w-full md:w-1/2 mb-12'>
+                    <p className='text-xl md:text-2xl font-bold mb-10'>Existing Users</p>
 
-                    <div className='flex items-center my-4 border border-gray-400 rounded-md px-2 space-x-4'>
-                        <BsSearch size={18} />
-                        <input 
-                            value={search}
-                            onChange={(event) => setSearch(event.currentTarget.value)} 
-                            className='w-full h-9 border-none p-2 text-sm focus-within:border-none active:border-none' 
-                            type="search" 
-                            placeholder='Filter...' 
-                            autoFocus 
-                        />
-                    </div>
+                        <div className='flex items-center my-4 border border-gray-400 rounded-md px-2 space-x-4'>
+                            <BsSearch size={18} />
+                            <input 
+                                value={search}
+                                onChange={(event) => setSearch(event.currentTarget.value)} 
+                                className='w-full h-9 border-none p-2 text-sm focus-within:border-none active:border-none' 
+                                type="search" 
+                                placeholder='Filter...' 
+                                autoFocus 
+                            />
+                        </div>
 
-                    <div className='mt-12 space-y-4'>
-                        {
-                            usersList && usersList.filter((user) => {
-                                const query = search.toLowerCase()
-                                return query === '' ? user : (user.name.toLowerCase().includes(query) || user.email.toLowerCase().includes(query))
-                            }).map((user, idx) => (<UserCard key={idx} user={user} />))
-                        }
-                    </div>
-            </div>
-            <div className='w-full md:w-1/2 mb-12'>
-                <p className='text-xl md:text-2xl font-bold mb-4'>Add New User</p>
+                        <div className='mt-12 space-y-4'>
+                            {
+                                usersList && usersList.filter((user) => {
+                                    const query = search.toLowerCase()
+                                    return query === '' ? user : (user.name.toLowerCase().includes(query) || user.email.toLowerCase().includes(query))
+                                }).map((user, idx) => (<UserCard key={idx} user={user} />))
+                            }
+                        </div>
+                </div>
+                <div className='w-full md:w-1/2 mb-12'>
+                    <p className='text-xl md:text-2xl font-bold mb-4'>Add New User</p>
 
-                <form onSubmit={handleSubmit(saveUser)}>
-                    <div className=''>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Name</label>
-                            <div>
-                                <input {...register("name", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                {errors.name && <span className='text-red-600 text-xs'>This field is required</span>}
+                    <form onSubmit={handleSubmit(saveUser)}>
+                        <div className=''>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Name</label>
+                                <div>
+                                    <input {...register("name", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    {errors.name && <span className='text-red-600 text-xs'>This field is required</span>}
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Email</label>
+                                <div>
+                                    <input {...register("email", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="email" />
+                                    {errors.email && <span className='text-red-600 text-xs'>This field is required</span>}
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Address</label>
+                                <div>
+                                    <input {...register("accountId", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    {errors.accountId && <span className='text-red-600 text-xs'>This field is required</span>}
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <button type='submit' className='bg-pharmaGreen-800 px-4 py-2 text-white rounded-md hover:bg-pharmaGreen-900'>{loading ? 'Saving...' : 'Save'}</button>
                             </div>
                         </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Email</label>
-                            <div>
-                                <input {...register("email", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="email" />
-                                {errors.email && <span className='text-red-600 text-xs'>This field is required</span>}
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Address</label>
-                            <div>
-                                <input {...register("accountId", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                {errors.accountId && <span className='text-red-600 text-xs'>This field is required</span>}
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <button type='submit' className='bg-pharmaGreen-800 px-4 py-2 text-white rounded-md hover:bg-pharmaGreen-900'>{loading ? 'Saving...' : 'Save'}</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     )

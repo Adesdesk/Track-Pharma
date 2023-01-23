@@ -120,59 +120,62 @@ function ItemDetails() {
   },[signer])
 
   return (
-    <div className='flex flex-col md:flex-row'>
-      <div className='flex flex-col w-full md:w-5/12 px-4 '>
-        <div className="text-left sm:text-left mb-14">
-          <h3 className="text-2xl font-bold">Item Details</h3>
-        </div>
-        <div className='flex flex-col'>
-          <div className='w-full'>
-            <img src='/logo3.png' className='w-24' />
+    
+    <div className='p-4 md:w-10/12 md:mx-auto'>
+      <div className='flex flex-col md:flex-row'>
+        <div className='flex flex-col w-full md:w-5/12 px-4 '>
+          <div className="text-left sm:text-left mb-14">
+            <h3 className="text-2xl font-bold">Item Details</h3>
           </div>
-          <div className='w-full space-y-2'>
-            <p className='text-xl font-bold'>{ item?.name }</p>
-            <p className=''>MFG: { item?.manufacturedDate }</p>
-            <p className=''>EXP: { item?.expiringDate }</p>
-          </div>
-        </div>
-      </div>
-      <div className="px-4 py-12 md:py-0 w-full md:w-7/12">
-        <div className="">
-          <div className="">
-            <div className="text-left sm:text-left mb-14">
-              <h3 className="text-2xl font-bold">Item History</h3>
+          <div className='flex flex-col'>
+            <div className='w-full'>
+              <img src='/logo3.png' className='w-24' />
+            </div>
+            <div className='w-full space-y-2'>
+              <p className='text-xl font-bold'>{ item?.name }</p>
+              <p className=''>MFG: { item?.manufacturedDate }</p>
+              <p className=''>EXP: { item?.expiringDate }</p>
             </div>
           </div>
-          <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
-            <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
+        </div>
+        <div className="px-4 py-12 md:py-0 w-full md:w-7/12">
+          <div className="">
+            <div className="">
+              <div className="text-left sm:text-left mb-14">
+                <h3 className="text-2xl font-bold">Item History</h3>
+              </div>
+            </div>
+            <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
+              <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
 
-              {manufacturer && 
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-pharmaGreen-800 bg-white p-4 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold tracking-wide">{manufacturer?.name}</h3>
-                  <time className="text-xs tracking-wide uppercase dark:text-gray-400">Manufacturer</time>
-                  <p className="mt-3">{manufacturer?.email}</p>
-                  <p className="text-xs mt-3">{firstAndLastFour(manufacturer?.accountId)}</p>
-                </div>
-              }
+                {manufacturer && 
+                  <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-pharmaGreen-800 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold tracking-wide">{manufacturer?.name}</h3>
+                    <time className="text-xs tracking-wide uppercase dark:text-gray-400">Manufacturer</time>
+                    <p className="mt-3">{manufacturer?.email}</p>
+                    <p className="text-xs mt-3">{firstAndLastFour(manufacturer?.accountId)}</p>
+                  </div>
+                }
 
-              {distributor &&
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-pharmaGreen-800 bg-white p-4 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold tracking-wide">{distributor?.name}</h3>
-                  <time className="text-xs tracking-wide uppercase dark:text-gray-400">Supplier</time>
-                  <p className="mt-3">{distributor?.email}</p>
-                  <p className="text-xs mt-3">{firstAndLastFour(distributor?.accountId)}</p>
-                </div> 
-              }
+                {distributor &&
+                  <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-pharmaGreen-800 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold tracking-wide">{distributor?.name}</h3>
+                    <time className="text-xs tracking-wide uppercase dark:text-gray-400">Supplier</time>
+                    <p className="mt-3">{distributor?.email}</p>
+                    <p className="text-xs mt-3">{firstAndLastFour(distributor?.accountId)}</p>
+                  </div> 
+                }
 
-              {retailer && 
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400 bg-white p-4 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold tracking-wide">{retailer?.name}</h3>
-                  <time className="text-xs tracking-wide uppercase dark:text-gray-400">Retailer</time>
-                  <p className="mt-3">{retailer?.email}</p>
-                  <p className="text-xs mt-3">{firstAndLastFour(retailer?.accountId)}</p>
-                </div>
-              }
+                {retailer && 
+                  <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold tracking-wide">{retailer?.name}</h3>
+                    <time className="text-xs tracking-wide uppercase dark:text-gray-400">Retailer</time>
+                    <p className="mt-3">{retailer?.email}</p>
+                    <p className="text-xs mt-3">{firstAndLastFour(retailer?.accountId)}</p>
+                  </div>
+                }
 
+              </div>
             </div>
           </div>
         </div>

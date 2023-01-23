@@ -131,23 +131,25 @@ function ProductIndex() {
 
   return (
     
-    <div className='bg-white w-full h-full shadow-md rounded-md p-2 md:p-10'>
-      <div className='flex justify-between items-center w-full'>
-        <p className='text-2xl font-bold mb-8'>Products</p>
-        <Link href="/products/new" className='border border-pharmaGreen-700 py-2 px-4 rounded-md text-xs text-pharmaGreen-700 transition ease-linear duration-200 hover:bg-pharmaGreen-500 hover:text-pharmaGreen-700'>Add new product</Link>
-      </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+    <div className='p-4 md:w-10/12 md:mx-auto'>
+      <div className='bg-white w-full h-full shadow-md rounded-md p-2 md:p-10'>
+        <div className='flex justify-between items-center w-full'>
+          <p className='text-2xl font-bold mb-8'>Products</p>
+          <Link href="/products/new" className='border border-pharmaGreen-700 py-2 px-4 rounded-md text-xs text-pharmaGreen-700 transition ease-linear duration-200 hover:bg-pharmaGreen-500 hover:text-pharmaGreen-700'>Add new product</Link>
+        </div>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {
+            allItems && allItems.map((item, index) => (
+              <ProductCard key={index} item={item} openModal={openModal} />
+            ))
+          }
+        </div>
+        
+        {/* MODAL */}
         {
-          allItems && allItems.map((item, index) => (
-            <ProductCard key={index} item={item} openModal={openModal} />
-          ))
+          showModal &&  <ProductModal isVisible={showModal} onClose={closeModal} modalItem={modalItem} shouldCloseOnOverlayClick={false} sellItem={sellItem} />
         }
       </div>
-      
-      {/* MODAL */}
-      {
-        showModal &&  <ProductModal isVisible={showModal} onClose={closeModal} modalItem={modalItem} shouldCloseOnOverlayClick={false} sellItem={sellItem} />
-      }
     </div>
   )
 }

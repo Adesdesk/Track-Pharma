@@ -94,165 +94,167 @@ function AddProduct() {
     },[sideEffectsList, compositionList])
 
     return (
-        <div className='flex flex-col gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
-            <div className='w-full'>
-                <p className='text-xl md:text-2xl font-bold mb-4'>Add Product</p>
+        <div className='p-4 md:w-10/12 md:mx-auto'>
+            <div className='flex flex-col gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
+                <div className='w-full'>
+                    <p className='text-xl md:text-2xl font-bold mb-4'>Add Product</p>
 
-                <div className=''>
-                    <form onSubmit={handleSubmit(saveItem)}>
+                    <div className=''>
+                        <form onSubmit={handleSubmit(saveItem)}>
 
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Manufacturer Name</label>
-                            <div>
-                                <input {...register("manufacturerName", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                <span className='text-xs text-red-600'>{errors.manufacturerName && <span>This field is required</span>}</span>
-                            </div>
-                        </div>
-                        {/* <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Manufacturer Email</label>
-                            <div>
-                                <input {...register("manufacturerEmail", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="email" />
-                                {errors.exampleRequired && <span>This field is required</span>}
-                            </div>
-                        </div> */}
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Manufacturing Date</label>
-                            <div>
-                                <input {...register("manufacturedDate", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                <span className='text-xs text-red-600'>{errors.manufacturedDate && <span>This field is required</span>}</span>
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Expires in (Days)</label>
-                            <div>
-                                <input {...register("expiringDate", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                <span className='text-xs text-red-600'>{errors.expiringDate && <span>This field is required</span>}</span>
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Product Name</label>
-                            <div>
-                                <input {...register("name", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                <span className='text-xs text-red-600'>{errors.name && <span>This field is required</span>}</span>
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Choose Prodcut Type</label>
-                            <div className='flex items-center space-x-12'>
-                                <div className='flex items-center space-x-2'>
-                                    <input {...register("isInBatch", { required: true })} value="individual" checked="checked" className='w-4 h-4 rounded p-1 text-sm form-radio' type="radio" id='product_type_i' />
-                                    <label htmlFor='product_type_i'>Individual</label>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Manufacturer Name</label>
+                                <div>
+                                    <input {...register("manufacturerName", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    <span className='text-xs text-red-600'>{errors.manufacturerName && <span>This field is required</span>}</span>
                                 </div>
-                                <div className='flex items-center space-x-2'>
-                                    <input {...register("isInBatch", { required: true })} value="batch" className='w-4 h-4 rounded p-1 text-sm form-radio' type="radio" id='product_type_b' />
-                                    <label htmlFor='product_type_b'>Batch</label>
+                            </div>
+                            {/* <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Manufacturer Email</label>
+                                <div>
+                                    <input {...register("manufacturerEmail", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="email" />
+                                    {errors.exampleRequired && <span>This field is required</span>}
                                 </div>
-                                <span className='text-xs text-red-600'>{errors.isInBatch && <span>This field is required</span>}</span>
+                            </div> */}
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Manufacturing Date</label>
+                                <div>
+                                    <input {...register("manufacturedDate", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    <span className='text-xs text-red-600'>{errors.manufacturedDate && <span>This field is required</span>}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Product ID</label>
-                            <span className='w-full text-xs text-gray-300'>F0212522542</span>
-                            <div>
-                                <input {...register("barcodeId", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
-                                <span className='text-xs text-red-600'>{errors.barcodeId && <span>This field is required</span>}</span>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Expires in (Days)</label>
+                                <div>
+                                    <input {...register("expiringDate", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    <span className='text-xs text-red-600'>{errors.expiringDate && <span>This field is required</span>}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Product Image (URL)</label>
-                            <div>
-                                <input {...register("itemImage", { required: urlPattern })} className='w-full h-9 rounded-md p-2 text-sm' type="url" />
-                                <span className='text-xs text-red-600'>{errors.itemImage && <span>This field is required</span>}</span>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Product Name</label>
+                                <div>
+                                    <input {...register("name", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    <span className='text-xs text-red-600'>{errors.name && <span>This field is required</span>}</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <p className='text-xl md:text-2xl font-bold mb-4'>General Information</p>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Choose Prodcut Type</label>
+                                <div className='flex items-center space-x-12'>
+                                    <div className='flex items-center space-x-2'>
+                                        <input {...register("isInBatch", { required: true })} value="individual" checked="checked" className='w-4 h-4 rounded p-1 text-sm form-radio' type="radio" id='product_type_i' />
+                                        <label htmlFor='product_type_i'>Individual</label>
+                                    </div>
+                                    <div className='flex items-center space-x-2'>
+                                        <input {...register("isInBatch", { required: true })} value="batch" className='w-4 h-4 rounded p-1 text-sm form-radio' type="radio" id='product_type_b' />
+                                        <label htmlFor='product_type_b'>Batch</label>
+                                    </div>
+                                    <span className='text-xs text-red-600'>{errors.isInBatch && <span>This field is required</span>}</span>
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Product ID</label>
+                                <span className='w-full text-xs text-gray-300'>F0212522542</span>
+                                <div>
+                                    <input {...register("barcodeId", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text" />
+                                    <span className='text-xs text-red-600'>{errors.barcodeId && <span>This field is required</span>}</span>
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Product Image (URL)</label>
+                                <div>
+                                    <input {...register("itemImage", { required: urlPattern })} className='w-full h-9 rounded-md p-2 text-sm' type="url" />
+                                    <span className='text-xs text-red-600'>{errors.itemImage && <span>This field is required</span>}</span>
+                                </div>
+                            </div>
+                            
+                            <p className='text-xl md:text-2xl font-bold mb-4'>General Information</p>
 
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Type</label>
-                            <div>                                
-                                <select {...register("itemType")} className='w-full h-9 rounded-md p-2 text-sm'>
-                                    <option value="0">Antibiotics</option>
-                                    <option value="1">Antimalaria</option>
-                                    <option value="2">Analgestics</option>
-                                    <option value="3">Supplements</option>
-                                    <option value="4">Steroids</option>
-                                </select>
-                                <span className='text-xs text-red-600'>{errors.itemType && <span>This field is required</span>}</span>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Type</label>
+                                <div>                                
+                                    <select {...register("itemType")} className='w-full h-9 rounded-md p-2 text-sm'>
+                                        <option value="0">Antibiotics</option>
+                                        <option value="1">Antimalaria</option>
+                                        <option value="2">Analgestics</option>
+                                        <option value="3">Supplements</option>
+                                        <option value="4">Steroids</option>
+                                    </select>
+                                    <span className='text-xs text-red-600'>{errors.itemType && <span>This field is required</span>}</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <p className='text-lg md:text-xl font-bold mb-4'>Others</p>
+                            
+                            <p className='text-lg md:text-xl font-bold mb-4'>Others</p>
 
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Side Effect</label>
-                            <div className='flex gap-4'>
-                                <div className='w-3/4'>
-                                    <input className='w-full h-9 rounded-md p-2 text-sm' id='sideEffect' onChange={(e)=>{
-                                        addSideEffect(e.target.value)
-                                    }} type="text" />
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Side Effect</label>
+                                <div className='flex gap-4'>
+                                    <div className='w-3/4'>
+                                        <input className='w-full h-9 rounded-md p-2 text-sm' id='sideEffect' onChange={(e)=>{
+                                            addSideEffect(e.target.value)
+                                        }} type="text" />
+                                    </div>
+                                    <div className='flex justify-center items-center w-1/4'>
+                                        <AiFillPlusCircle onClick={()=>appendSideEffect()} className='text-pharmaGreen-800 cursor-pointer' size={25} />
+                                    </div>
                                 </div>
-                                <div className='flex justify-center items-center w-1/4'>
-                                    <AiFillPlusCircle onClick={()=>appendSideEffect()} className='text-pharmaGreen-800 cursor-pointer' size={25} />
+                                <div>
+                                    {
+                                        sideEffectsList.map((sideEffect, index) => {
+                                            return (
+                                                <div key={index} className='flex gap-4 my-2'>
+                                                    <div className='w-3/4'>
+                                                        {sideEffect}
+                                                    </div>
+                                                    <div className='flex justify-center items-center w-1/4'>
+                                                        <AiFillMinusCircle onClick={() => deleteSideEffect(index)} className='text-red-800 cursor-pointer' size={25} />
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Composition</label>
+                                <div className='flex gap-4'>
+                                    <div className='w-3/4'>
+                                        <input className='w-full h-9 rounded-md p-2 text-sm' onChange={(e)=> {
+                                            addComposition(e.target.value)
+                                        }} type="text" />
+                                    </div>
+                                    <div className='flex justify-center items-center w-1/4'>
+                                        <AiFillPlusCircle onClick={()=>appendComposition()} className='text-pharmaGreen-800 cursor-pointer' size={25} />
+                                    </div>
+                                </div>
+                                <div>
+                                    {
+                                        compositionList.map((composition, index) => {
+                                            return (
+                                                <div key={index} className='flex gap-4 my-2'>
+                                                    <div className='w-3/4'>
+                                                        {composition}
+                                                    </div>
+                                                    <div className='flex justify-center items-center w-1/4'>
+                                                        <AiFillMinusCircle onClick={() => deleteComposition(index)} className='text-red-800 cursor-pointer' size={25} />
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                            <div className='mb-4'>
+                                <label className='text-sm font-semibold'>Prescription</label>
+                                <div>
+                                    <textarea {...register("usage", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text"></textarea>
+                                    <span className='text-xs text-red-600'>{errors.usage && <span>This field is required</span>}</span>
                                 </div>
                             </div>
                             <div>
-                                {
-                                    sideEffectsList.map((sideEffect, index) => {
-                                        return (
-                                            <div key={index} className='flex gap-4 my-2'>
-                                                <div className='w-3/4'>
-                                                    {sideEffect}
-                                                </div>
-                                                <div className='flex justify-center items-center w-1/4'>
-                                                    <AiFillMinusCircle onClick={() => deleteSideEffect(index)} className='text-red-800 cursor-pointer' size={25} />
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
+                                <input className='bg-pharmaGreen-800 cursor-pointer text-white rounded-md text-sm py-2 px-4 hover:bg-pharmaGreen-700 transition ease-linear duration-150' type="submit" />
                             </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Composition</label>
-                            <div className='flex gap-4'>
-                                <div className='w-3/4'>
-                                    <input className='w-full h-9 rounded-md p-2 text-sm' onChange={(e)=> {
-                                        addComposition(e.target.value)
-                                    }} type="text" />
-                                </div>
-                                <div className='flex justify-center items-center w-1/4'>
-                                    <AiFillPlusCircle onClick={()=>appendComposition()} className='text-pharmaGreen-800 cursor-pointer' size={25} />
-                                </div>
-                            </div>
-                            <div>
-                                {
-                                    compositionList.map((composition, index) => {
-                                        return (
-                                            <div key={index} className='flex gap-4 my-2'>
-                                                <div className='w-3/4'>
-                                                    {composition}
-                                                </div>
-                                                <div className='flex justify-center items-center w-1/4'>
-                                                    <AiFillMinusCircle onClick={() => deleteComposition(index)} className='text-red-800 cursor-pointer' size={25} />
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className='mb-4'>
-                            <label className='text-sm font-semibold'>Prescription</label>
-                            <div>
-                                <textarea {...register("usage", { required: true })} className='w-full h-9 rounded-md p-2 text-sm' type="text"></textarea>
-                                <span className='text-xs text-red-600'>{errors.usage && <span>This field is required</span>}</span>
-                            </div>
-                        </div>
-                        <div>
-                            <input className='bg-pharmaGreen-800 cursor-pointer text-white rounded-md text-sm py-2 px-4 hover:bg-pharmaGreen-700 transition ease-linear duration-150' type="submit" />
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
