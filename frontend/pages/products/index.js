@@ -296,6 +296,7 @@ function ProductIndex() {
   }
 
   return (
+    <>    
     <div className='bg-white w-full h-full shadow-md rounded-md p-2 md:p-10'>
       <div className='flex justify-between items-center w-full'>
         <p className='text-2xl font-bold mb-8'>Products</p>
@@ -313,8 +314,9 @@ function ProductIndex() {
       {
         showModal &&  <ProductModal isVisible={showModal} onClose={closeModal} modalItem={modalItem} shouldCloseOnOverlayClick={false} sellItem={sellItem} />
       }
-      <Footer />
     </div>
+    <Footer />
+    </>
   )
 }
 

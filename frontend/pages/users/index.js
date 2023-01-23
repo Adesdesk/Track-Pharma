@@ -120,6 +120,7 @@ function AddProduct() {
 
 
     return (
+        <>
         <div className='flex flex-col-reverse gap-12 md:flex-row bg-white w-full h-full shadow-md rounded-md p-10'>
             
             <div className='w-full md:w-1/2 mb-12'>
@@ -178,8 +179,9 @@ function AddProduct() {
                     </div>
                 </form>
             </div>
-            <Footer />
         </div>
+        <Footer />
+    </>
     )
 }
 
