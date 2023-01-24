@@ -1,6 +1,6 @@
 # Track-Pharma
 ## A supply chain management solution for pharmaceutical products by TEAM201
-### track-pharma.vercel.app
+track-pharma.vercel.app
 
 Track-Pharma is a blockchain project by a collaborative effort of members of Team201. It is a decentralized application with which all parties involved in the pharmaceutical supply chain can easily create, store and retrieve certificates of each product history. This is provides an easy way to verify authenticity of pharmaceutical supplies and ensure compliance with standards.
 
@@ -47,4 +47,4 @@ Track-Pharma is especially relevant in developing nations where importers of pha
 
 The increased transparency it fosters will deter and perhaps even terminate the illicit production, importation, and distribution of pharmaceutical goods in under-developed, as well as developing countries.
 
-### track-pharma.vercel.app
+track-pharma.vercel.app
