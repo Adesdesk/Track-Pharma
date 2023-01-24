@@ -24,7 +24,7 @@ export default function Home() {
               Empowering healthcare through decentralization: the future of pharmaceutical supply chain management is here!
             </p>
             {/*<Link href='/products' className='py-4 px-6 text-white font-bold text-2xl rounded-md bg-gradient-to-br from-pharmaGreen-700 to-yellow-500'>Explore Products</Link>*/}
-            <Link href='/products' className='block py-2 px-4 text-white font-bold text-xl 
+            <Link href='/products' className='py-2 px-4 text-white font-bold text-xl 
             rounded-md bg-gradient-to-br from-pharmaGreen-700 to-yellow-500 md:text-2xl lg:text-2xl 
             xl:text-2xl md:py-4 lg:py-4 xl:py-4 md:px-6 lg:px-6 xl:px-6'>Explore Products</Link>
             </div>
