@@ -1,5 +1,6 @@
 # Track-Pharma
-## A supply chain management solution for pharmaceutical products
+## A supply chain management solution for pharmaceutical products by TEAM201
+### track-pharma.vercel.app
 
 Track-Pharma is a blockchain project by a collaborative effort of members of Team201. It is a decentralized application with which all parties involved in the pharmaceutical supply chain can easily create, store and retrieve certificates of each product history. This is provides an easy way to verify authenticity of pharmaceutical supplies and ensure compliance with standards.
 
@@ -13,10 +14,14 @@ With more effective and trustless management of the supply chain of these produc
 
 Track-Pharma uses an user-friendly interface in its implementation as a supply-chain management system for pharmaceutical products
 
+
 ![Track-Pharma_user_interface](https://user-images.githubusercontent.com/101281102/214290533-35e7965e-1e43-4a18-8f7e-b2119b43266e.JPG)
 
+### track-pharma.vercel.app
 
-The following Solidity functions are implemented in achieving developing the smart contract underlying Track-Pharma
+
+## The following Solidity functions are implemented in achieving developing the smart contract underlying Track-Pharma
+
 ![image](https://user-images.githubusercontent.com/101281102/214293128-93b15f3c-1d51-4886-8adf-20c4f0774e70.png)
 
 
@@ -38,4 +43,8 @@ A web-based user interface, using Next.js, Tailwind CSS, where users can access 
 
 ![Track-Pharma flow diagram](https://user-images.githubusercontent.com/101281102/213938545-e689bbc6-6573-4a2c-aab9-79a8ec7fc92e.JPG)
 
-Track-Pharma is especially relevant in developing nations where importers of pharmaceutical supplies frequently circumvent national standards-setting laws. This solution will ensure that the manufacturer and location of production of certain pharmaceutical products can be clearly traced, and linked to the quality of each supply. Improved public access to high-quality pharmaceuticals and related products, which will result in a more effective healthcare system, will be one effect of this solution. The increased transparency it fosters will deter and perhaps even terminate the illicit production, importation, and distribution of pharmaceutical goods in under-developed, as well as developing countries.
+Track-Pharma is especially relevant in developing nations where importers of pharmaceutical supplies frequently circumvent national standards-setting laws. This solution will ensure that the manufacturer and location of production of certain pharmaceutical products can be clearly traced, and linked to the quality of each supply. Improved public access to high-quality pharmaceuticals and related products, which will result in a more effective healthcare system, will be one effect of this solution. 
+
+The increased transparency it fosters will deter and perhaps even terminate the illicit production, importation, and distribution of pharmaceutical goods in under-developed, as well as developing countries.
+
+### track-pharma.vercel.app
