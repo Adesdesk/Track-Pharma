@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
-import { polygon, polygonMumbai, hardhat } from "wagmi/chains";
+import { polygonMumbai } from "wagmi/chains";
 import Nav from '../components/Nav'
 import ContextWrapper from '../context/ContextWrapper';
 import styles from '@/styles/Home.module.css'
@@ -10,7 +10,7 @@ import styles from '@/styles/Home.module.css'
 const alchemyId = 'SFH9QsvWk9aagTGGHdHjmsmzAiCWy0m1';
 
 // Choose which chains you'd like to show
-const chains = [polygon, polygonMumbai, hardhat];
+const chains = [polygonMumbai];
 
 const client = createClient(
   getDefaultClient({
