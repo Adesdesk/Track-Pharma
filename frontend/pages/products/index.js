@@ -16,21 +16,19 @@ function ProductIndex() {
   const [allItems, setAllItems] = useState();
   const getAllItems = async() => {
     try {
-        if(isConnected) {
 
-            const contractInstance = new Contract(
-                PHARMA_ADDRESS,
-                PHARMA_ABI,
-                signer
-            );
-            
-            const allItems = await contractInstance.getAllItems();
-            const formattedItems = allItems.map(item => formatItem(item))
-            console.log("🚀 ~ file: index.js:180 ~ getAllItems ~ formattedItems", formattedItems)
+      const contractInstance = new Contract(
+          PHARMA_ADDRESS,
+          PHARMA_ABI,
+          signer
+      );
+      
+      const allItems = await contractInstance.getAllItems();
+      const formattedItems = allItems.map(item => formatItem(item))
+      console.log("🚀 ~ file: index.js:180 ~ getAllItems ~ formattedItems", formattedItems)
 
-            setAllItems(formattedItems);
-            
-        }
+      setAllItems(formattedItems);
+      
     } catch (error) {
         console.log('Could not get all items', error);
     }
